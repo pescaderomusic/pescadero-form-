@@ -1040,50 +1040,59 @@
     const out = document.getElementById('slide-' + current);
     const inn = document.getElementById('slide-' + next);
 
-    const outTo  = dir === 'forward' ? 'translateX(-48px)' : 'translateX(48px)';
-    const inFrom = dir === 'forward' ? 'translateX(48px)'  : 'translateX(-48px)';
+    const outTo  = dir === 'forward' ? '-48px' : '48px';
+    const inFrom = dir === 'forward' ? '48px'  : '-48px';
 
-    // Mark both as animating (visible but not interactive)
-    out.classList.add('animating');
-    inn.classList.add('animating');
+    // Step 1: immediately kill outgoing interactivity
+    out.style.pointerEvents = 'none';
+    out.style.zIndex = '1';
+    inn.style.zIndex = '2';
 
-    // Remove active from outgoing immediately so it can't be tapped
-    out.classList.remove('is-active');
-
-    // Position incoming off-screen instantly with no transition
+    // Step 2: position incoming off-screen with no transition
     inn.style.transition = 'none';
-    inn.style.opacity    = '0';
-    inn.style.transform  = inFrom;
+    inn.style.opacity = '0';
+    inn.style.transform = `translateX(${inFrom})`;
+    inn.style.visibility = 'visible';
+    inn.style.pointerEvents = 'none';
 
-    void inn.offsetHeight; // flush reflow
+    void inn.offsetHeight;
 
-    // Animate outgoing out
-    out.style.transition = `opacity ${DUR}ms var(--ease), transform ${DUR}ms var(--ease)`;
-    out.style.opacity    = '0';
-    out.style.transform  = outTo;
+    // Step 3: animate both
+    const T = `opacity ${DUR}ms cubic-bezier(0.22,1,0.36,1), transform ${DUR}ms cubic-bezier(0.22,1,0.36,1)`;
 
-    // Animate incoming in
-    inn.style.transition = `opacity ${DUR}ms var(--ease), transform ${DUR}ms var(--ease)`;
-    inn.style.opacity    = '1';
-    inn.style.transform  = 'translateX(0)';
+    out.style.transition = T;
+    out.style.opacity = '0';
+    out.style.transform = `translateX(${outTo})`;
+
+    inn.style.transition = T;
+    inn.style.opacity = '1';
+    inn.style.transform = 'translateX(0)';
 
     // Crossfade background
     showBg(next);
 
+    // Step 4: clean up after animation
     setTimeout(() => {
-      // Clean up outgoing
-      out.classList.remove('animating');
+      // Hide outgoing completely
+      out.classList.remove('is-active', 'animating');
       out.style.cssText = '';
 
-      // Settle incoming as fully active
-      inn.classList.remove('animating');
+      // Fully activate incoming
       inn.style.cssText = '';
       inn.classList.add('is-active');
+
+      // Force all other slides completely hidden
+      document.querySelectorAll('.slide').forEach(s => {
+        if (s.id !== 'slide-' + next) {
+          s.classList.remove('is-active', 'animating');
+          s.style.cssText = '';
+        }
+      });
 
       current = next;
       updateProgress(next);
       animating = false;
-    }, DUR + 30);
+    }, DUR + 50);
   }
 
   function tabNav(step) {
