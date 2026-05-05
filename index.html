@@ -770,25 +770,17 @@
 
         <div class="field-group">
           <div class="field-label">Event Date <span class="req">*</span></div>
-          <input type="date" id="eventDate" />
-          <!-- Hidden split fields for Google Form -->
-          <input type="hidden" id="eventDate_year"  name="entry.1402594235_year" />
-          <input type="hidden" id="eventDate_month" name="entry.1402594235_month" />
-          <input type="hidden" id="eventDate_day"   name="entry.1402594235_day" />
+          <input type="date" id="eventDate" name="entry.1402594235" />
         </div>
 
         <div class="field-row">
           <div class="field-group">
             <div class="field-label">Start Time <span class="req">*</span></div>
-            <input type="time" id="startTime" />
-            <input type="hidden" id="startTime_hour"   name="entry.1145643384_hour" />
-            <input type="hidden" id="startTime_minute" name="entry.1145643384_minute" />
+            <input type="time" id="startTime" name="entry.1145643384" />
           </div>
           <div class="field-group">
             <div class="field-label">End Time <span class="req">*</span></div>
-            <input type="time" id="endTime" />
-            <input type="hidden" id="endTime_hour"   name="entry.839784182_hour" />
-            <input type="hidden" id="endTime_minute" name="entry.839784182_minute" />
+            <input type="time" id="endTime" name="entry.839784182" />
           </div>
         </div>
 
@@ -835,20 +827,19 @@
         <div class="field-group">
           <div class="field-label">Service Request <span class="req">*</span></div>
           <div class="choice-group">
-            <label class="choice-item"><input type="checkbox" name="entry.2010812548_sentinel" value="MC Service" /> MC Service</label>
-            <label class="choice-item"><input type="checkbox" name="entry.2010812548_sentinel" value="Ceremony Sound and Microphones" /> Ceremony Sound &amp; Microphones</label>
-            <label class="choice-item"><input type="checkbox" name="entry.2010812548_sentinel" value="Speeches / Toasts" /> Speeches / Toasts</label>
-            <label class="choice-item"><input type="checkbox" name="entry.2010812548_sentinel" value="Dinner Music" /> Dinner Music</label>
-            <label class="choice-item"><input type="checkbox" name="entry.2010812548_sentinel" value="Dance Music / Lighting" /> Dance Music / Lighting</label>
+            <label class="choice-item"><input type="checkbox" name="entry.2010812548" value="MC Service" /> MC Service</label>
+            <label class="choice-item"><input type="checkbox" name="entry.2010812548" value="Ceremony, Speeches, and Toast Sound System &amp; Wireless Microphones" /> Ceremony Sound &amp; Microphones</label>
+            <label class="choice-item"><input type="checkbox" name="entry.2010812548" value="Dinner Background Music" /> Dinner Music</label>
+            <label class="choice-item"><input type="checkbox" name="entry.2010812548" value="Dance Music / Lighting" /> Dance Music / Lighting</label>
           </div>
         </div>
 
         <div class="field-group">
           <div class="field-label">Approximate Budget <span class="req">*</span></div>
           <div class="choice-group">
-            <label class="choice-item"><input type="radio" name="entry.2134853116" value="$500–$1,000" /> $500 – $1,000</label>
-            <label class="choice-item"><input type="radio" name="entry.2134853116" value="$1,000–$2,000" /> $1,000 – $2,000</label>
-            <label class="choice-item"><input type="radio" name="entry.2134853116" value="$2,000–$3,000" /> $2,000 – $3,000</label>
+            <label class="choice-item"><input type="radio" name="entry.2134853116" value="$500 - $1,000" /> $500 – $1,000</label>
+            <label class="choice-item"><input type="radio" name="entry.2134853116" value="$1,000 - $2,000" /> $1,000 – $2,000</label>
+            <label class="choice-item"><input type="radio" name="entry.2134853116" value="$2,000 - $3,000" /> $2,000 – $3,000</label>
             <label class="choice-item"><input type="radio" name="entry.2134853116" value="Over $3,000" /> Over $3,000</label>
           </div>
         </div>
@@ -885,28 +876,18 @@
         onsubmit="handleSubmit(event)"
       >
         <!-- All entry IDs wired to Google Form -->
-        <input type="hidden" id="h_firstName"      name="entry.315397321" />
-        <input type="hidden" id="h_lastName"       name="entry.735438890" />
-        <input type="hidden" id="h_email"          name="entry.1653024831" />
-        <input type="hidden" id="h_phone"          name="entry.1505839442" />
-        <input type="hidden" id="h_contactMethod"  name="entry.1289776342" />
-        <input type="hidden" id="h_coupleNames"    name="entry.391503868" />
-        <input type="hidden" id="h_eventName"      name="entry.167147996" />
-        <!-- Date split fields -->
-        <input type="hidden" id="h_eventDate_year"  name="entry.1402594235_year" />
-        <input type="hidden" id="h_eventDate_month" name="entry.1402594235_month" />
-        <input type="hidden" id="h_eventDate_day"   name="entry.1402594235_day" />
-        <!-- Start time split fields -->
-        <input type="hidden" id="h_startTime_hour"   name="entry.1145643384_hour" />
-        <input type="hidden" id="h_startTime_minute" name="entry.1145643384_minute" />
-        <!-- End time split fields -->
-        <input type="hidden" id="h_endTime_hour"   name="entry.839784182_hour" />
-        <input type="hidden" id="h_endTime_minute" name="entry.839784182_minute" />
-        <input type="hidden" id="h_venue"          name="entry.1267295149" />
-        <input type="hidden" id="h_venueAddress"   name="entry.1474838283" />
-        <input type="hidden" id="h_indoorOutdoor"  name="entry.1884292728" />
-        <input type="hidden" id="h_attendance"     name="entry.1801133532" />
-        <input type="hidden" id="h_budget"         name="entry.2134853116" />
+        <input type="hidden" id="h_firstName"         name="entry.315397321" />
+        <input type="hidden" id="h_lastName"          name="entry.735438890" />
+        <input type="hidden" id="h_email"             name="entry.1653024831" />
+        <input type="hidden" id="h_phone"             name="entry.1505839442" />
+        <input type="hidden" id="h_contactMethod"     name="entry.1289776342" />
+        <input type="hidden" id="h_coupleNames"       name="entry.391503868" />
+        <input type="hidden" id="h_eventName"         name="entry.167147996" />
+        <input type="hidden" id="h_venue"             name="entry.1267295149" />
+        <input type="hidden" id="h_venueAddress"      name="entry.1474838283" />
+        <input type="hidden" id="h_indoorOutdoor"     name="entry.1884292728" />
+        <input type="hidden" id="h_attendance"        name="entry.1801133532" />
+        <input type="hidden" id="h_budget"            name="entry.2134853116" />
         <input type="hidden" id="h_additionalDetails" name="entry.1670641103" />
 
         <div class="slide-footer">
@@ -1014,26 +995,8 @@
   const r  = name => { const el = document.querySelector(`input[name="${name}"]:checked`); return el ? el.value : '—'; };
   const cb = name => { const els = [...document.querySelectorAll(`input[name="${name}"]:checked`)]; return els.length ? els.map(e => e.value).join(', ') : '—'; };
 
-  /* Split a date string "YYYY-MM-DD" into parts */
-  function splitDate(val) {
-    if (!val) return { year: '', month: '', day: '' };
-    const [year, month, day] = val.split('-');
-    return { year: year || '', month: String(parseInt(month) || ''), day: String(parseInt(day) || '') };
-  }
-
-  /* Split a time string "HH:MM" into parts */
-  function splitTime(val) {
-    if (!val) return { hour: '', minute: '' };
-    const [hour, minute] = val.split(':');
-    return { hour: String(parseInt(hour) || ''), minute: minute || '' };
-  }
-
   /* ─── REVIEW ─── */
   function buildReview() {
-    const dateVal  = v('eventDate');
-    const startVal = v('startTime');
-    const endVal   = v('endTime');
-
     const rows = [
       ['Name',           `${v('firstName')} ${v('lastName')}`],
       ['Email',          v('email')],
@@ -1041,14 +1004,14 @@
       ['Contact Via',    r('entry.1289776342')],
       ['Bride & Groom',  v('coupleNames')],
       ['Event',          v('eventName')],
-      ['Date',           dateVal],
-      ['Start',          startVal],
-      ['End',            endVal],
+      ['Date',           v('eventDate')],
+      ['Start',          v('startTime')],
+      ['End',            v('endTime')],
       ['Venue',          v('venue')],
       ['Address',        v('venueAddress')],
       ['Setting',        r('entry.1884292728')],
       ['Attendance',     v('attendance')],
-      ['Services',       cb('entry.2010812548_sentinel')],
+      ['Services',       cb('entry.2010812548')],
       ['Budget',         r('entry.2134853116')],
       ['Notes',          v('additionalDetails') || '—'],
     ];
@@ -1060,7 +1023,7 @@
       </div>`
     ).join('');
 
-    /* ── Sync simple hidden inputs ── */
+    /* Sync hidden inputs */
     document.getElementById('h_firstName').value         = v('firstName');
     document.getElementById('h_lastName').value          = v('lastName');
     document.getElementById('h_email').value             = v('email');
@@ -1074,22 +1037,6 @@
     document.getElementById('h_attendance').value        = v('attendance');
     document.getElementById('h_budget').value            = r('entry.2134853116');
     document.getElementById('h_additionalDetails').value = v('additionalDetails');
-
-    /* ── Split date into year / month / day ── */
-    const d = splitDate(dateVal);
-    document.getElementById('h_eventDate_year').value  = d.year;
-    document.getElementById('h_eventDate_month').value = d.month;
-    document.getElementById('h_eventDate_day').value   = d.day;
-
-    /* ── Split start time into hour / minute ── */
-    const st = splitTime(startVal);
-    document.getElementById('h_startTime_hour').value   = st.hour;
-    document.getElementById('h_startTime_minute').value = st.minute;
-
-    /* ── Split end time into hour / minute ── */
-    const et = splitTime(endVal);
-    document.getElementById('h_endTime_hour').value   = et.hour;
-    document.getElementById('h_endTime_minute').value = et.minute;
   }
 
   /* ─── SUBMIT ─── */
