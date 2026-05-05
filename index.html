@@ -156,6 +156,59 @@
       box-shadow: -12px 0 48px rgba(13,27,42,0.25);
     }
 
+    /* ── PANEL SITE HEADER ── */
+    .panel-header {
+      flex-shrink: 0;
+      background: var(--navy);
+      padding: 0 24px;
+      height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 3px solid var(--red);
+    }
+
+    .panel-header-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 2px rgba(68,190,199,0.4);
+    }
+
+    .panel-header-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .panel-header-title {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 1px;
+    }
+
+    .panel-header-sub {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      line-height: 1;
+    }
+
+    .panel-header-main {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1;
+      letter-spacing: -0.1px;
+    }
+
     /* ── PROGRESS BAR (top of panel) ── */
     .progress-bar {
       flex-shrink: 0;
@@ -643,6 +696,17 @@
 <!-- ═══ RIGHT: FORM PANEL ═══ -->
 <div class="form-panel">
 
+  <!-- Site header -->
+  <div class="panel-header">
+    <div class="panel-header-logo">
+      <img src="images/logo.png" alt="Pescadero Music" />
+    </div>
+    <div class="panel-header-title">
+      <span class="panel-header-sub">Pescadero Music</span>
+      <span class="panel-header-main">Wedding Sound Inquiry</span>
+    </div>
+  </div>
+
   <!-- Progress tabs -->
   <div class="progress-bar" id="progressBar">
     <button class="step-btn active" data-step="1" onclick="tabNav(1)">
@@ -828,8 +892,9 @@
           <div class="field-label">Service Request <span class="req">*</span></div>
           <div class="choice-group">
             <label class="choice-item"><input type="checkbox" name="entry.2010812548" value="MC Service" /> MC Service</label>
-            <label class="choice-item"><input type="checkbox" name="entry.2010812548" value="Ceremony, Speeches, and Toast Sound System &amp; Wireless Microphones" /> Ceremony Sound &amp; Microphones</label>
-            <label class="choice-item"><input type="checkbox" name="entry.2010812548" value="Dinner Background Music" /> Dinner Music</label>
+            <label class="choice-item"><input type="checkbox" name="entry.2010812548" value="Ceremony Sound &amp; Wireless Microphones" /> Ceremony Sound &amp; Wireless Microphones</label>
+            <label class="choice-item"><input type="checkbox" name="entry.2010812548" value="Speeches &amp; Toasts" /> Speeches &amp; Toasts</label>
+            <label class="choice-item"><input type="checkbox" name="entry.2010812548" value="Dinner Background Music" /> Dinner Background Music</label>
             <label class="choice-item"><input type="checkbox" name="entry.2010812548" value="Dance Music / Lighting" /> Dance Music / Lighting</label>
           </div>
         </div>
