@@ -299,9 +299,9 @@
       gap: 0;
       opacity: 0;
       pointer-events: none;
+      visibility: hidden;
       overflow-y: auto;
       overscroll-behavior: contain;
-      /* hidden scrollbar — content should fit */
       scrollbar-width: none;
     }
 
@@ -310,13 +310,14 @@
     .slide.is-active {
       opacity: 1;
       pointer-events: auto;
+      visibility: visible;
     }
 
-    /* Slide transition states set by JS */
-    .slide.enter-from-right { transform: translateX(48px); }
-    .slide.enter-from-left  { transform: translateX(-48px); }
-    .slide.exit-to-left     { transform: translateX(-48px); }
-    .slide.exit-to-right    { transform: translateX(48px); }
+    /* During animation only — visible but not interactive */
+    .slide.animating {
+      visibility: visible;
+      pointer-events: none;
+    }
 
     /* ── SLIDE HEADER ── */
     .slide-head {
@@ -969,9 +970,7 @@
 
 <script>
   /* ─── CONFIG ─── */
-  const TOTAL   = 4;   // numbered steps (excludes policy slide 1)
   const DUR     = 400; // transition ms
-  const EASE    = 'cubic-bezier(0.22, 1, 0.36, 1)';
   let current   = 1;
   let animating = false;
 
@@ -996,38 +995,47 @@
     const outTo  = dir === 'forward' ? 'translateX(-48px)' : 'translateX(48px)';
     const inFrom = dir === 'forward' ? 'translateX(48px)'  : 'translateX(-48px)';
 
-    /* Position incoming off-screen instantly */
+    // Mark both as animating (visible but not interactive)
+    out.classList.add('animating');
+    inn.classList.add('animating');
+
+    // Remove active from outgoing immediately so it can't be tapped
+    out.classList.remove('is-active');
+
+    // Position incoming off-screen instantly with no transition
     inn.style.transition = 'none';
     inn.style.opacity    = '0';
     inn.style.transform  = inFrom;
-    inn.classList.add('is-active');
-    inn.style.pointerEvents = 'none';
 
-    void inn.offsetHeight; // flush
+    void inn.offsetHeight; // flush reflow
 
-    /* Animate outgoing */
-    out.style.transition = `opacity ${DUR}ms ${EASE}, transform ${DUR}ms ${EASE}`;
+    // Animate outgoing out
+    out.style.transition = `opacity ${DUR}ms var(--ease), transform ${DUR}ms var(--ease)`;
     out.style.opacity    = '0';
     out.style.transform  = outTo;
 
-    /* Animate incoming */
-    inn.style.transition = `opacity ${DUR}ms ${EASE}, transform ${DUR}ms ${EASE}`;
+    // Animate incoming in
+    inn.style.transition = `opacity ${DUR}ms var(--ease), transform ${DUR}ms var(--ease)`;
     inn.style.opacity    = '1';
     inn.style.transform  = 'translateX(0)';
 
-    /* Crossfade background */
+    // Crossfade background
     showBg(next);
 
     setTimeout(() => {
-      out.classList.remove('is-active');
+      // Clean up outgoing
+      out.classList.remove('animating');
       out.style.cssText = '';
+
+      // Settle incoming as fully active
+      inn.classList.remove('animating');
       inn.style.cssText = '';
       inn.classList.add('is-active');
 
       current = next;
       updateProgress(next);
       animating = false;
-    }, DUR + 20);
+    }, DUR + 30);
   }
 
   function tabNav(step) {
